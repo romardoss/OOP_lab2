@@ -6,9 +6,9 @@
         {
         }
 
-        public override void WinGame(GameAccount opponent, int rating, int gameID)
+        public override void LoseGame(GameAccount opponent, int rating, int gameID)
         {
-            base.WinGame(opponent, rating/2, gameID);
+            base.LoseGame(opponent, rating/2, gameID);
         }
     }
 }

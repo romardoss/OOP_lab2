@@ -16,20 +16,29 @@ namespace Lab_2
             //Testing.ArgumentOutOfRangeTest4();
 
 
-            GameAccount Roma = new("Roma");
-            //BoostGameAccount Roma = new("Roma");
-            var Dima = new GameAccount("Dima");
-            var Vasya = new GameAccount("Vasya");
+            //GameAccount Roma = new("Roma");
+            BoostGameAccount Roma = new("Roma");
+            VIPGameAccount Dima = new("Dima");
+            InARowWinGameAccount Vasya = new("Vasya");
             var Andrew = new GameAccount("Andrew");
 
             PlayStandard(Roma, Dima, 30);
             PlayStandard(Roma, Vasya, 31);
             PlayStandard(Dima, Roma, 34);
+            PlayStandard(Roma, Dima, 34);
             PlayStandard(Roma, Vasya, 34);
             PlayStandard(Vasya, Roma, 25);
             PlayStandard(Dima, Andrew, 29);
             PlayStandard(Roma, Andrew, 22);
             PlayStandard(Vasya, Andrew, 30);
+            PlayStandard(Roma, Roma, 20);
+            PlayStandard(Dima, Vasya, 30);
+            PlayStandard(Vasya, Andrew, 10);
+            PlayStandard(Vasya, Andrew, 10);
+            PlayStandard(Vasya, Andrew, 10);
+            PlayStandard(Vasya, Andrew, 10);
+            PlayStandard(Vasya, Andrew, 10);
+            PlayStandard(Vasya, Andrew, 10);
 
             Console.WriteLine(Dima.GetStats());
             Console.WriteLine(Roma.GetStats());

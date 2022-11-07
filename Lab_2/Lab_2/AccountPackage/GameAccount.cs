@@ -14,19 +14,7 @@ namespace Lab_2.AccountPackage
                 int rating = 1;
                 foreach (var item in GameHistory)
                 {
-                    if (item.IsWin)
-                    {
-                        rating += item.Rating;
-                    }
-                    else
-                    {
-                        rating -= item.Rating;
-                    }
-
-                    if (rating < 1)
-                    {
-                        rating = 1;
-                    }
+                    rating += item.Rating;
                 }
                 return rating;
             }
@@ -60,7 +48,6 @@ namespace Lab_2.AccountPackage
 
             var game = new Game(true, rating, this, opponent, gameID);
             GameHistory.Add(game);
-            //adding a win game for this
         }
 
         public virtual void LoseGame(GameAccount opponent, int rating, int gameID)
@@ -70,6 +57,7 @@ namespace Lab_2.AccountPackage
                 throw new ArgumentOutOfRangeException(nameof(rating), "Argument must be positive");
             }
 
+            rating = (this.CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
             var game = new Game(false, rating, this, opponent, gameID);
             GameHistory.Add(game);
 
@@ -86,17 +74,9 @@ namespace Lab_2.AccountPackage
             {
                 string rating;
 
-                if (item.IsWin)
-                {
-                    wholeRaiting += item.Rating;
-                }
-                else
-                {
-                    int minusRating = (wholeRaiting <= item.Rating) ? (1 - wholeRaiting) : -item.Rating;
-                    wholeRaiting += minusRating;
-                }
+                wholeRaiting += item.Rating;
 
-                rating = item.IsWin ? ("+" + item.Rating) : ("-" + item.Rating);
+                rating = item.IsWin ? ("+" + item.Rating) : ("" + item.Rating);
                 if (rating == "0" && !item.IsWin)
                 {
                     rating = "-0";
