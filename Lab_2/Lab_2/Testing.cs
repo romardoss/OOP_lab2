@@ -27,7 +27,7 @@ namespace Lab_2
 
         }
 
-        public static void ArgumentOutOfRangeTest1()
+/*        public static void ArgumentOutOfRangeTest1()
         {
             GameAccount test = new("test");
             GameAccount test0 = new("test0");
@@ -39,9 +39,9 @@ namespace Lab_2
             {
                 Console.WriteLine(e.Message);
             }
-        }
+        }*/
 
-        public static void ArgumentOutOfRangeTest2()
+ /*       public static void ArgumentOutOfRangeTest2()
         {
             GameAccount test = new("test1");
             GameAccount test0 = new("test2");
@@ -53,9 +53,9 @@ namespace Lab_2
             {
                 Console.WriteLine(e.Message);
             }
-        }
+        }*/
 
-        public static void ArgumentOutOfRangeTest3()
+ /*       public static void ArgumentOutOfRangeTest3()
         {
             GameAccount test = new("test3");
             GameAccount test0 = new("test4");
@@ -67,9 +67,9 @@ namespace Lab_2
             {
                 Console.WriteLine(e.Message);
             }
-        }
+        }*/
 
-        public static void ArgumentOutOfRangeTest4()
+  /*      public static void ArgumentOutOfRangeTest4()
         {
             GameAccount test = new("test5");
             GameAccount test0 = new("test6");
@@ -81,6 +81,6 @@ namespace Lab_2
             {
                 Console.WriteLine(e.Message);
             }
-        }
+        }*/
     }
 }

@@ -14,22 +14,15 @@ namespace Lab_2.AccountPackage
                 int rating = 1;
                 foreach (var item in GameHistory)
                 {
-                    int change;
-                    bool isWin = item.IsWin;
-                    if (item.Player1.UserName != this.UserName)
+                    if (item.IsWin)
                     {
-                        isWin = !isWin;
-                    }
-
-                    if (isWin)
-                    {
-                        change = item.Rating;
+                        rating += item.Rating;
                     }
                     else
                     {
-                        change = -item.Rating;
+                        rating -= item.Rating;
                     }
-                    rating += change;
+
                     if (rating < 1)
                     {
                         rating = 1;
@@ -58,31 +51,27 @@ namespace Lab_2.AccountPackage
             AllNames.Add(name);
         }
 
-        public void WinGame(GameAccount opponent, int rating)
+        public virtual void WinGame(GameAccount opponent, int rating, int gameID)
         {
             if (rating <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(rating), "Argument must be positive");
             }
 
-            var game = new Game(true, rating, this, opponent);
+            var game = new Game(true, rating, this, opponent, gameID);
             GameHistory.Add(game);
             //adding a win game for this
-
-            opponent.GameHistory.Add(game);
-            //adding a lose game for opponent
         }
 
-        public void LoseGame(GameAccount opponent, int rating)
+        public virtual void LoseGame(GameAccount opponent, int rating, int gameID)
         {
             if (rating <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(rating), "Argument must be positive");
             }
 
-            var game = new Game(false, rating, this, opponent);
+            var game = new Game(false, rating, this, opponent, gameID);
             GameHistory.Add(game);
-            opponent.GameHistory.Add(game);
 
         }
 
@@ -90,27 +79,14 @@ namespace Lab_2.AccountPackage
         {
             var stats = new System.Text.StringBuilder();
             int wholeRaiting = 1;
-            int gameCount = 0;
 
             stats.AppendLine("Game statistics of " + this.UserName);
-            stats.AppendLine("ID\tGame number\tResult\tRating\tChange\tOpponent");
+            stats.AppendLine("ID\tResult\tRating\tChange\tOpponent");
             foreach (var item in GameHistory)
             {
-                gameCount++;
                 string rating;
-                bool isWin = item.IsWin;
-                string opponent;
-                if (item.Player2.UserName == this.UserName)
-                {
-                    isWin = !isWin;
-                    opponent = item.Player1.UserName;
-                }
-                else
-                {
-                    opponent = item.Player2.UserName;
-                }
 
-                if (isWin)
+                if (item.IsWin)
                 {
                     wholeRaiting += item.Rating;
                 }
@@ -120,15 +96,15 @@ namespace Lab_2.AccountPackage
                     wholeRaiting += minusRating;
                 }
 
-                rating = isWin ? ("+" + item.Rating) : ("-" + item.Rating);
-                if (rating == "0" && !isWin)
+                rating = item.IsWin ? ("+" + item.Rating) : ("-" + item.Rating);
+                if (rating == "0" && !item.IsWin)
                 {
                     rating = "-0";
                 }
-                string winOrLose = isWin ? "Win" : "Lose";
+                string winOrLose = item.IsWin ? "Win" : "Lose";
 
-                stats.AppendLine($"{item.GameIndex}\t{gameCount}\t" +
-                    $"\t{winOrLose}\t{wholeRaiting}\t{rating}\t{opponent}");
+                stats.AppendLine($"{item.GameIndex}\t" +
+                    $"{winOrLose}\t{wholeRaiting}\t{rating}\t{item.Opponent.UserName}");
             }
 
             return stats.ToString();

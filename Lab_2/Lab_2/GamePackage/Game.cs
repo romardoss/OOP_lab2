@@ -5,19 +5,17 @@ namespace Lab_2.GamePackage
     internal class Game
     {
         public bool IsWin { get; }
-        public GameAccount Player1 { get; }
-        public GameAccount Player2 { get; }
+        public GameAccount Player { get; }
+        public GameAccount Opponent { get; }
         public int Rating { get; }
-        private static int GameID = 28462;
         public string GameIndex { get; }
 
-        public Game(bool isWin, int rating, GameAccount player1, GameAccount player2)
+        public Game(bool isWin, int rating, GameAccount player, GameAccount player2, int gameID)
         {
-            GameIndex = ((int)GameID).ToString();
-            GameID++;
+            GameIndex = gameID.ToString();
             IsWin = isWin;
-            Player1 = player1;
-            Player2 = player2;
+            Player = player;
+            Opponent = player2;
             Rating = rating;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Lab_2.AccountPackage;
 using System;
+using static Lab_2.GameManager;
 
 namespace Lab_2
 {
@@ -15,19 +16,20 @@ namespace Lab_2
             //Testing.ArgumentOutOfRangeTest4();
 
 
-            GameAccount Roma = new GameAccount("Roma");
+            GameAccount Roma = new("Roma");
+            //BoostGameAccount Roma = new("Roma");
             var Dima = new GameAccount("Dima");
             var Vasya = new GameAccount("Vasya");
             var Andrew = new GameAccount("Andrew");
 
-            Roma.WinGame(Dima, 30);
-            Vasya.LoseGame(Roma, 31);
-            Dima.WinGame(Roma, 34);
-            Roma.WinGame(Vasya, 34);
-            Vasya.WinGame(Roma, 25);
-            Andrew.WinGame(Dima, 29);
-            Roma.WinGame(Andrew, 22);
-            Andrew.LoseGame(Vasya, 30);
+            PlayStandard(Roma, Dima, 30);
+            PlayStandard(Roma, Vasya, 31);
+            PlayStandard(Dima, Roma, 34);
+            PlayStandard(Roma, Vasya, 34);
+            PlayStandard(Vasya, Roma, 25);
+            PlayStandard(Dima, Andrew, 29);
+            PlayStandard(Roma, Andrew, 22);
+            PlayStandard(Vasya, Andrew, 30);
 
             Console.WriteLine(Dima.GetStats());
             Console.WriteLine(Roma.GetStats());
