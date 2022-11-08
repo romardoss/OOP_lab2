@@ -1,4 +1,6 @@
-﻿namespace Lab_2.AccountPackage
+﻿using Lab_2.GamePackage;
+
+namespace Lab_2.AccountPackage
 {
     internal class BoostGameAccount : GameAccount
     {
@@ -6,9 +8,13 @@
         {
         }
 
-        public override void LoseGame(GameAccount opponent, int rating, int gameID)
+        public override void LoseGame(GameAccount opponent, Game game, int gameID)
         {
-            base.LoseGame(opponent, rating/2, gameID);
+            int rating = game.CalculateRating(this);
+            rating /= 2;
+            rating = (CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
+            Game newGame = game.Copy(true, rating, this, opponent, gameID);
+            GameHistory.Add(newGame);
         }
     }
 }

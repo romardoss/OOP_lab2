@@ -1,4 +1,6 @@
-﻿namespace Lab_2.AccountPackage
+﻿using Lab_2.GamePackage;
+
+namespace Lab_2.AccountPackage
 {
     internal class VIPGameAccount : GameAccount
     {
@@ -6,16 +8,22 @@
         {
         }
 
-        public override void WinGame(GameAccount opponent, int rating, int gameID)
+        public override void WinGame(GameAccount opponent, Game game, int gameID)
         {
-            rating = (int) (rating*1.5);
-            base.WinGame(opponent, rating, gameID);
+            int rating = game.CalculateRating(this);
+            rating = (int)(rating * 1.5);
+            rating = (CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
+            Game newGame = game.Copy(true, rating, this, opponent, gameID);
+            GameHistory.Add(newGame);
         }
 
-        public override void LoseGame(GameAccount opponent, int rating, int gameID)
+        public override void LoseGame(GameAccount opponent, Game game, int gameID)
         {
+            int rating = game.CalculateRating(this);
             rating = (int)(rating * 0.5);
-            base.LoseGame(opponent, rating, gameID);
+            rating = (CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
+            Game newGame = game.Copy(true, rating, this, opponent, gameID);
+            GameHistory.Add(newGame);
         }
     }
 }

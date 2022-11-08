@@ -31,5 +31,10 @@ namespace Lab_2.GamePackage
             }
             return 0;
         }
+
+        public override Game Copy(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID)
+        {
+            return new LuckyGame(isWin, rating, player, opponent, gameID);
+        }
     }
 }

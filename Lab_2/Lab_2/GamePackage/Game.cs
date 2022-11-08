@@ -22,5 +22,7 @@ namespace Lab_2.GamePackage
 
         public abstract int CalculateRating(GameAccount g=null);
 
+
+        public abstract Game Copy(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID);
     }
 }

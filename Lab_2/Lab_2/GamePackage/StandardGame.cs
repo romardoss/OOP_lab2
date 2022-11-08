@@ -14,5 +14,10 @@ namespace Lab_2.GamePackage
         {
             return Rating;
         }
+
+        public override Game Copy(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID)
+        {
+            return new StandardGame(isWin, rating, player, opponent, gameID);
+        }
     }
 }

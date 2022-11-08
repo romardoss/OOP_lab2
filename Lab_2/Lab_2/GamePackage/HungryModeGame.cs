@@ -27,5 +27,10 @@ namespace Lab_2.GamePackage
                 return 5 * Rating;
             }
         }
+
+        public override Game Copy(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID)
+        {
+            return new HungryModeGame(isWin, rating, player, opponent, gameID);
+        }
     }
 }

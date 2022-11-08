@@ -27,7 +27,7 @@ namespace Lab_2.AccountPackage
             }
         }
         private static readonly List<string> AllNames = new();
-        private readonly List<Game> GameHistory = new();
+        protected readonly List<Game> GameHistory = new();
 
         public GameAccount(string name)
         {
@@ -39,27 +39,19 @@ namespace Lab_2.AccountPackage
             AllNames.Add(name);
         }
 
-        public virtual void WinGame(GameAccount opponent, int rating, int gameID)
+        public virtual void WinGame(GameAccount opponent, Game game, int gameID)
         {
-            if (rating <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(rating), "Argument must be positive");
-            }
-
-            var game = new Game(true, rating, this, opponent, gameID);
-            GameHistory.Add(game);
+            int rating = game.CalculateRating(this);
+            Game newGame = game.Copy(true, rating, this, opponent, gameID);
+            GameHistory.Add(newGame);
         }
 
-        public virtual void LoseGame(GameAccount opponent, int rating, int gameID)
+        public virtual void LoseGame(GameAccount opponent, Game game, int gameID)
         {
-            if (rating <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(rating), "Argument must be positive");
-            }
-
-            rating = (this.CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
-            var game = new Game(false, rating, this, opponent, gameID);
-            GameHistory.Add(game);
+            int rating = game.CalculateRating(this);
+            rating = (CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
+            Game newGame = game.Copy(true, rating, this, opponent, gameID);
+            GameHistory.Add(newGame);
 
         }
 
@@ -68,7 +60,7 @@ namespace Lab_2.AccountPackage
             var stats = new System.Text.StringBuilder();
             int wholeRaiting = 1;
 
-            stats.AppendLine("Game statistics of " + this.UserName);
+            stats.AppendLine("Game statistics of " + UserName);
             stats.AppendLine("ID\tResult\tRating\tChange\tOpponent");
             foreach (var item in GameHistory)
             {
