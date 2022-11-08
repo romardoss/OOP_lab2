@@ -7,7 +7,7 @@ namespace Lab_2.GamePackage
         public HungryModeGame(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID) 
             : base(isWin, rating, player, opponent, gameID)
         {
-            GameType = "Hungry Mod Game";
+            Type = "Hungry Mod Game";
         }
 
         public override int CalculateRating(GameAccount g)

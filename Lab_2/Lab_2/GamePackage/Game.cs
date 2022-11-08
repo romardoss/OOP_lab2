@@ -10,7 +10,15 @@ namespace Lab_2.GamePackage
         public GameAccount Opponent { get; }
         public int Rating { get; }
         public string GameIndex { get; }
-        protected string GameType;
+        protected string Type { get; set; }
+        public string GameType 
+        { 
+            get
+            {
+                return Type;
+            }
+        }
+
 
         public Game(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID)
         {

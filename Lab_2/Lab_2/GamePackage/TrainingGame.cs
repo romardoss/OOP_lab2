@@ -7,7 +7,7 @@ namespace Lab_2.GamePackage
         public TrainingGame(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID) 
             : base(isWin, rating, player, opponent, gameID)
         {
-            GameType = "Training Game";
+            Type = "Training Game";
         }
 
         public override int CalculateRating(GameAccount g=null)

@@ -9,7 +9,7 @@ namespace Lab_2.GamePackage
         public LuckyGame(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID) 
             : base(isWin, rating, player, opponent, gameID)
         {
-            GameType = "Lucky Game";
+            Type = "Lucky Game";
             //Вибір випадкової жертви
             System.Random random = new();
             int choseVictim = random.Next(0, 2);

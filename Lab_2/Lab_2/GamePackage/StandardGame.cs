@@ -7,7 +7,7 @@ namespace Lab_2.GamePackage
         public StandardGame(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID) 
             : base(isWin, rating, player, opponent, gameID)
         {
-            GameType = "Standard Game";
+            Type = "Standard Game";
         }
 
         public override int CalculateRating(GameAccount g = null)

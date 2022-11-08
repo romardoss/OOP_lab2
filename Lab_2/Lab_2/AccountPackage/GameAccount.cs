@@ -61,7 +61,7 @@ namespace Lab_2.AccountPackage
             int wholeRaiting = 1;
 
             stats.AppendLine("Game statistics of " + UserName);
-            stats.AppendLine("ID\tResult\tRating\tChange\tOpponent");
+            stats.AppendLine("ID\tResult\tRating\tChange\tOpponent\tGame type");
             foreach (var item in GameHistory)
             {
                 string rating;
@@ -76,7 +76,7 @@ namespace Lab_2.AccountPackage
                 string winOrLose = item.IsWin ? "Win" : "Lose";
 
                 stats.AppendLine($"{item.GameIndex}\t" +
-                    $"{winOrLose}\t{wholeRaiting}\t{rating}\t{item.Opponent.UserName}");
+                    $"{winOrLose}\t{wholeRaiting}\t{rating}\t{item.Opponent.UserName}\t\t{item.GameType}");
             }
 
             return stats.ToString();
