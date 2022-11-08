@@ -10,35 +10,56 @@ namespace Lab_2
         private static int GameID = 28462;
         public static List<Game> GameList = new();
 
-        public static void PlayStandard(GameAccount player1, GameAccount player2, int rating)
+        public static Game PlayStandard(GameAccount winner, GameAccount looser, int rating)
         {
-            if(CheckAll(player1, player2, rating))
+            if(CheckAll(winner, looser, rating))
             {
-                int id = GameID;
-                GameID++;
-                //Треба створити гру
-                //І метод для повернення базової гри
-                Game game = new StandardGame(true, rating, player1, player2, id);
-                GameList.Add(game);
-                //і логіку при виграші/програші
-                player1.WinGame(player2, game, id);
-                player2.LoseGame(player1, game, id);
+                Game game = new StandardGame(true, rating, winner, looser, GameID);
+                Play(winner, looser, game);
+                return game;
             }
+            return null;
         }
 
-        public static void PlayTraining(GameAccount player1, GameAccount player2)
+        public static Game PlayTraining(GameAccount winner, GameAccount looser, int rating)
         {
-
+            if (CheckAll(winner, looser, rating))
+            {
+                Game game = new TrainingGame(true, rating, winner, looser, GameID);
+                Play(winner, looser, game);
+                return game;
+            }
+            return null;
         }
 
-        public static void PlayLucky(GameAccount player1, GameAccount player2)
+        public static Game PlayLucky(GameAccount winner, GameAccount looser, int rating)
         {
-
+            if (CheckAll(winner, looser, rating))
+            {
+                Game game = new LuckyGame(true, rating, winner, looser, GameID);
+                Play(winner, looser, game);
+                return game;
+            }
+            return null;
         }
 
-        public static void PlayHungry(GameAccount player1, GameAccount player2)
+        public static Game PlayHungry(GameAccount winner, GameAccount looser, int rating)
         {
+            if (CheckAll(winner, looser, rating))
+            {
+                Game game = new HungryModeGame(true, rating, winner, looser, GameID);
+                Play(winner, looser, game);
+                return game;
+            }
+            return null;
+        }
 
+        private static void Play(GameAccount winner, GameAccount looser, Game game)
+        {
+            GameList.Add(game);
+            winner.WinGame(looser, game, GameID);
+            looser.LoseGame(winner, game, GameID);
+            GameID++;
         }
 
         private static bool CheckUser(GameAccount player1, GameAccount player2)

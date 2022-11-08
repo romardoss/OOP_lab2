@@ -5,6 +5,7 @@ namespace Lab_2.GamePackage
     internal abstract class Game
     {
         public bool IsWin { get; }
+        // IsWin relates to the Player
         public GameAccount Player { get; }
         public GameAccount Opponent { get; }
         public int Rating { get; }

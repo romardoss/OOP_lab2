@@ -13,7 +13,7 @@ namespace Lab_2.AccountPackage
             int rating = game.CalculateRating(this);
             rating /= 2;
             rating = (CurrentRating > rating) ? -rating : 1 - this.CurrentRating;
-            Game newGame = game.Copy(true, rating, this, opponent, gameID);
+            Game newGame = game.Copy(false, rating, this, opponent, gameID);
             GameHistory.Add(newGame);
         }
     }
