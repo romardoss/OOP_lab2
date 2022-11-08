@@ -1,0 +1,5 @@
+**/.vs
+**Lab_2.sln
+**Lab_2.csproj
+**/bin
+**/obj
