@@ -14,9 +14,8 @@ namespace Lab_2
             //Testing.ArgumentOutOfRangeTest2();
             //Testing.ArgumentOutOfRangeTest3();
             //Testing.ArgumentOutOfRangeTest4();
+            Testing.CheckUserTest();
 
-
-            //GameAccount Roma = new("Roma");
             BoostGameAccount Roma = new("Roma");
             VIPGameAccount Dima = new("Dima");
             InARowWinGameAccount Vasya = new("Vasya");
@@ -31,7 +30,6 @@ namespace Lab_2
             PlayStandard(Dima, Andrew, 29);
             PlayStandard(Roma, Andrew, 22);
             PlayStandard(Vasya, Andrew, 30);
-            //PlayStandard(Roma, Roma, 20);
             PlayStandard(Dima, Vasya, 30);
             PlayStandard(Vasya, Andrew, 10);
             PlayStandard(Vasya, Andrew, 10);

@@ -1,5 +1,7 @@
 ﻿using Lab_2.AccountPackage;
+using Lab_2.GamePackage;
 using System;
+using static Lab_2.GameManager;
 
 namespace Lab_2
 {
@@ -27,60 +29,42 @@ namespace Lab_2
 
         }
 
-/*        public static void ArgumentOutOfRangeTest1()
+        public static void ArgumentOutOfRangeTest1()
         {
             GameAccount test = new("test");
             GameAccount test0 = new("test0");
             try
             {
-                test.WinGame(test0, -1);
+                PlayStandard(test, test0, -10);
             }
             catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
             }
-        }*/
+        }
 
- /*       public static void ArgumentOutOfRangeTest2()
+        public static void ArgumentOutOfRangeTest2()
         {
             GameAccount test = new("test1");
             GameAccount test0 = new("test2");
             try
             {
-                test.WinGame(test0, 0);
+                PlayStandard(test, test0, 0);
             }
             catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
             }
-        }*/
+        }
 
- /*       public static void ArgumentOutOfRangeTest3()
+        public static void CheckUserTest()
         {
-            GameAccount test = new("test3");
-            GameAccount test0 = new("test4");
-            try
+            GameAccount test = new("test1");
+            Game answer = PlayStandard(test, test, 10);
+            if(answer == null)
             {
-                test.LoseGame(test0, -1);
+                Console.WriteLine("PlayStandard return is null\n");
             }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }*/
-
-  /*      public static void ArgumentOutOfRangeTest4()
-        {
-            GameAccount test = new("test5");
-            GameAccount test0 = new("test6");
-            try
-            {
-                test.LoseGame(test0, 0);
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }*/
+        }
     }
 }
