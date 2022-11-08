@@ -102,5 +102,21 @@ namespace Lab_2
         {
             return (CheckUser(player1, player2) && CheckRatingArgument(rating));
         }
+
+        public static string GetHistory()
+        {
+            var stats = new System.Text.StringBuilder();
+            stats.AppendLine("History of all games: ");
+            stats.AppendLine("ID\tResult\tRating\tPlayer\tOpponent\tGame type");
+
+            foreach (var item in GameList)
+            {
+                stats.AppendLine($"{item.GameIndex}\t" +
+                    $"{item.IsWin}\t{item.Rating}\t{item.Player.UserName}" +
+                    $"\t{item.Opponent.UserName}\t\t{item.GameType}");
+            }
+
+            return stats.ToString();
+        }
     }
 }

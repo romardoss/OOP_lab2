@@ -77,7 +77,7 @@ namespace Lab_2
                 Console.WriteLine(Andrew.GetStats());
             }
 
-
+            Console.WriteLine(GetHistory());
             
         }
     }
