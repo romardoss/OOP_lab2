@@ -49,11 +49,32 @@ namespace Lab_2
                 Console.WriteLine(Vasya.GamesCount + " games played by " + Vasya.UserName);
                 Console.WriteLine(Roma.CurrentRating + " raiting achieved by " + Roma.UserName);
                 Console.WriteLine(Andrew.CurrentRating + " raiting achieved by " + Andrew.UserName);
+                Console.WriteLine("\n");
+                
             }
 
             // Playground 2
             {
+                BoostGameAccount Roma = new("Roman");
+                VIPGameAccount Dima = new("Dimas");
+                InARowWinGameAccount Vasya = new("Vasyan");
+                var Andrew = new GameAccount("Andriy");
 
+                PlayStandard(Roma, Andrew, 100);
+                PlayStandard(Dima, Andrew, 100);
+                PlayStandard(Vasya, Andrew, 50);
+                PlayHungry(Dima, Roma, 20);
+                PlayLucky(Dima, Andrew, 10);
+                PlayLucky(Dima, Andrew, 10);
+                PlayLucky(Dima, Andrew, 10);
+                PlayLucky(Dima, Andrew, 10);
+                PlayTraining(Andrew, Vasya, 1000);
+                PlayTraining(Dima, Vasya, 1000);
+
+                Console.WriteLine(Dima.GetStats());
+                Console.WriteLine(Roma.GetStats());
+                Console.WriteLine(Vasya.GetStats());
+                Console.WriteLine(Andrew.GetStats());
             }
 
 
