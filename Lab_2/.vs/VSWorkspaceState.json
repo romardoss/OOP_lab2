@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Lab_2",
+    "\\Lab_2\\AccountPackage",
     "\\Lab_2\\GamePackage"
   ],
-  "SelectedNode": "\\Lab_2\\Testing.cs",
+  "SelectedNode": "\\Lab_2\\AccountPackage\\VIPGameAccount.cs",
   "PreviewInSolutionExplorer": false
 }

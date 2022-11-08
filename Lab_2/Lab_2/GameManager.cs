@@ -14,6 +14,8 @@ namespace Lab_2
             {
                 int id = GameID;
                 GameID++;
+                //Треба створити гру
+                //І метод для повернення базової гри
                 player1.WinGame(player2, rating, id);
                 player2.LoseGame(player1, rating, id);
             }

@@ -2,21 +2,25 @@
 
 namespace Lab_2.GamePackage
 {
-    internal class Game
+    internal abstract class Game
     {
         public bool IsWin { get; }
         public GameAccount Player { get; }
         public GameAccount Opponent { get; }
         public int Rating { get; }
         public string GameIndex { get; }
+        protected string GameType;
 
-        public Game(bool isWin, int rating, GameAccount player, GameAccount player2, int gameID)
+        public Game(bool isWin, int rating, GameAccount player, GameAccount opponent, int gameID)
         {
             GameIndex = gameID.ToString();
             IsWin = isWin;
             Player = player;
-            Opponent = player2;
+            Opponent = opponent;
             Rating = rating;
         }
+
+        public abstract int CalculateRating(GameAccount g=null);
+
     }
 }
